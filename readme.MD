@@ -12,17 +12,17 @@ It will be run iteratively, where:
 - For each iteration:
   - For each pixel:
     1. If the pixel is already there, skip
-    1. If at least `alpha %` of the neighbouring pixels are there,
+    1. If at least $\alpha \%$ of the neighbouring pixels are there,
        1. run the network with these pixels as input
        1. sets the newly generated pixel
 
 The training will be done as follows:
 
-1. An input image (`#I = < width, height, channels >`) is selected from \[a whole image of a\] sample set
-1. An input boolean mask (`#M = < width, height >`) is generated, representing the lack of pixels
-1. The net is trained to, for given local `I` and `M` (the size of the CNNs input kernel), reproduce every pixel `p` where the mask `m` is `false`.
-   The network won't have access to any pixel where `m` is `false`.
-1. Remove pixels from the mask `M` (by setting them to `false`) before resuming training
+1. An input image ($\# I = \left< \mathrm{width}, \mathrm{height}, \mathrm{channels} \right>$) is selected from \[a whole image of a\] sample set
+1. An input boolean mask ($\# M = \left< \mathrm{width}, \mathrm{height} \right>$) is generated, representing the lack of pixels
+1. The net is trained to, for given local $I$ and $M$ (the size of the CNNs input kernel), reproduce every pixel $p$ where the mask $m$ is `false`.
+   The network won't have access to any pixel where $m$ is `false`.
+1. Remove pixels from the mask $M$ (by setting them to `false`) before resuming training
 
 ### Utilities
 
@@ -64,7 +64,7 @@ $$
 
 Unknown $f$ params:
 
-- $\vec k\in\N^n$: the kernel shape minus $\vec 1$ over $2$
+- $\vec k\in\mathrm N^n$: the kernel shape minus $\vec 1$ over $2$
 - $\alpha\in[0; 1]$
 
 While $g\circ(I, M, \vec p, \vec k)$ is a descending series of convolutions on the neighbourhood of $\vec p$, resulting in only one pixel.
